@@ -101,7 +101,7 @@ def call (Map configMap){
                                 sh '''
                                     set -e
 
-                                    REPO="${org}/${component}"
+                                    REPO="Pathanfirdose/daws-90s-catalogue"
 
                                     curl -s -L \
                                     -H "Accept: application/vnd.github+json" \
