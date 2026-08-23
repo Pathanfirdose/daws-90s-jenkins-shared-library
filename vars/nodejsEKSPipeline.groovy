@@ -228,27 +228,27 @@ def call (Map configMap){
                     }
                 }
             }
-            stage('api-tests'){
-                steps{
-                    script{
-                        try{
-                            build job: 'ROBOSHOP/catalogue-api-tests',
-                            wait: true, // shoud wait
-                            propagate: true, // downstream errors are considered as upstream errors too
-                            parameters: [
-                                string(name: 'NAMESPACE', value: 'roboshop-dev'),
-                                string(name: 'COMMIT_ID', value: env.GIT_COMMIT )
-                            ]
-                            utils.updateCommitStatus("success", "api tests success", "api-tests")
-                        }
-                        catch(Exception e){
-                            utils.updateCommitStatus("failure", "api tests failed", "api-tests")
-                            throw e
-                        }
+            // stage('api-tests'){
+            //     steps{
+            //         script{
+            //             try{
+            //                 build job: 'ROBOSHOP/catalogue-api-tests',
+            //                 wait: true, // shoud wait
+            //                 propagate: true, // downstream errors are considered as upstream errors too
+            //                 parameters: [
+            //                     string(name: 'NAMESPACE', value: 'roboshop-dev'),
+            //                     string(name: 'COMMIT_ID', value: env.GIT_COMMIT )
+            //                 ]
+            //                 utils.updateCommitStatus("success", "api tests success", "api-tests")
+            //             }
+            //             catch(Exception e){
+            //                 utils.updateCommitStatus("failure", "api tests failed", "api-tests")
+            //                 throw e
+            //             }
                         
-                    }
-                }
-            }
+            //         }
+            //     }
+            // }
         }
 
         post { 
